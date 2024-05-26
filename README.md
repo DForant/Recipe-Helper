@@ -56,10 +56,14 @@ Start the development servers:
 npm start
 
 # In the frontend directory
-npm start
+The frontend is scaffolded with Vite using the react template 
+ npm run dev
 
-Contributing
-Contributions are welcome! Feel free to open issues or submit pull requests.
+ in a web browser navigate to: http://localhost:5173
+
+ By default Vite will run on port 5173. But if for some reason vite is running on a different port just replace the port number with what port vite is running on (The running port will be shown in the terminal window after running npm run dev)
+
+
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
