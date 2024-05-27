@@ -1,5 +1,5 @@
-// server.js
 import express from 'express'
+import sequelize from './config/db.js';
 
 const app = express();
 const port = 3000; // Choose any available port

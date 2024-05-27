@@ -11,6 +11,8 @@
   "author": "Dean Forant",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mysql2": "^3.9.8",
+    "sequelize": "^6.37.3"
   }
 }
