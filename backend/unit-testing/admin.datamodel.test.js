@@ -1,5 +1,6 @@
 // Import the function to sync and return the Admin model from the admin model file
-const syncAndReturnModel  = require('../models/admin');
+const syncAndReturnModel = require('../models/admin');
+
 // Import the sequelize instance from the database configuration file
 const sequelize = require('../config/db');
 

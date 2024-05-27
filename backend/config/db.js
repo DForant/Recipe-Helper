@@ -1,5 +1,6 @@
 // Import the Sequelize constructor from the sequelize package
 const Sequelize = require('sequelize');
+
 // Import the dotenv package to manage environment variables
 const dotenv = require('dotenv');
 
