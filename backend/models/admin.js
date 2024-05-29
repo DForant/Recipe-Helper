@@ -1,4 +1,4 @@
-// Destructure Model and DataTypes from the sequelize package
+// Import necessary modules from the sequelize package
 const { Model, DataTypes } = require('sequelize');
 
 // Import the sequelize instance configured in the db.js file

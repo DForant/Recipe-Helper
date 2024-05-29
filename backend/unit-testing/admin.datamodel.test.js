@@ -23,7 +23,7 @@ afterAll(async () => {
 
 // Describe block defines a test suite for the Admin model
 describe('Admin Model', () => {
-  // 'it' block defines an individual test case
+  // 'it' block defines an individual test case for creating a new admin
   it('should create a new admin', async () => {
     // Define the data for creating a new admin
     const adminData = {
@@ -39,4 +39,33 @@ describe('Admin Model', () => {
     expect(admin.email).toBe(adminData.email);
     expect(admin.password).toBe(adminData.password);
   });
+
+  // 'it' block defines an individual test case to ensure 'username' is not null
+  it('should not allow null for username', async () => {
+    // Expect an error to be thrown if 'username' is null
+    await expect(Admin.create({ admin_id: 1, email: 'test@example.com', password: 'securePassword' }))
+      .rejects.toThrow();
+  });
+
+  // 'it' block defines an individual test case to ensure 'email' is not null
+  it('should not allow null for email', async () => {
+    // Expect an error to be thrown if 'email' is null
+    await expect(Admin.create({ admin_id: 1, username: 'testUser', password: 'securePassword' }))
+      .rejects.toThrow();
+  });
+
+  // 'it' block defines an individual test case to validate the email format
+  it('should validate email format', async () => {
+    // Expect an error to be thrown if 'email' is not in a valid format
+    await expect(Admin.create({ admin_id: 1, username: 'testUser', email: 'notAnEmail', password: 'securePassword' }))
+      .rejects.toThrow();
+  });
+
+  // 'it' block defines an individual test case to ensure 'password' is not null
+  it('should not allow null for password', async () => {
+    // Expect an error to be thrown if 'password' is null
+    await expect(Admin.create({ admin_id: 1, username: 'testUser', email: 'test@example.com' }))
+      .rejects.toThrow();
+  });
+
 });

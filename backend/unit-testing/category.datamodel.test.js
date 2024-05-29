@@ -1,33 +1,46 @@
-const syncAndReturnModel = require('../path/to/your/model/file'); // Update the path to where your model file is located;
+// Import the 'syncAndReturnModel' function from the 'category' model file
+const syncAndReturnModel = require('../models/category');
+// Import the configured sequelize instance from the 'db' configuration file
+const sequelize = require('../config/db');
 
+let Category; // Declare a variable to store the Category model
+
+// Hook to run before all test cases
+beforeAll(async () => {
+  Category = await syncAndReturnModel(); // Initialize the Category model by calling the imported function
+  await sequelize.sync({ force: true }); // Force sync the database, which will drop and recreate tables
+});
+
+// Hook to run after all test cases
+afterAll(async () => {
+  await sequelize.close(); // Close the database connection
+});
+
+// Describe block defines a test suite for the Category model
 describe('Category Model', () => {
-  let Category;
+  // Test case to check if a new category can be created successfully
+  it('should create a new category', async () => {
+    const categoryData = {
+      name: 'Test Category' // Define the data for the new category
+    };
 
-  beforeAll(async () => {
-    Category = await syncAndReturnModel();
+    const category = await Category.create(categoryData); // Create a new category in the database
+
+    // Assertions to verify the created category has the correct properties
+    expect(category).toBeInstanceOf(Category); // Check if 'category' is an instance of Category model
+    expect(category.category_id).toBeGreaterThan(0); // Check if 'category_id' is assigned and greater than 0
+    expect(category.name).toEqual(categoryData.name); // Check if 'name' matches the provided data
   });
 
-  test('should sync with the database', async () => {
-    await expect(Category.sync()).resolves.not.toThrow();
-  });
-
-  test('should have the correct model name', () => {
-    expect(Category.modelName).toBe('Category');
-  });
-
-  test('should have the correct table name', () => {
-    expect(Category.getTableName()).toBe('categories');
-  });
-
-  test('should define the primary key', () => {
-    expect(Category.primaryKeyAttribute).toBe('category_id');
-  });
-
-  test('should define the correct attributes', () => {
-    const attributes = Category.rawAttributes;
-    expect(attributes.category_id).toBeDefined();
-    expect(attributes.name).toBeDefined();
-    expect(attributes.category_id.type).toBeInstanceOf(DataTypes.INTEGER);
-    expect(attributes.name.type).toBeInstanceOf(DataTypes.STRING);
+  // Test case to check that a category cannot be created with invalid data
+  it('should not create a category with invalid data', async () => {
+    expect.assertions(1); // Specify the number of assertions expected in this test case
+  
+    try {
+      await Category.create({ name: null }); // Attempt to create a category with invalid data (null name)
+    } catch (error) {
+      // Catch the error and assert that it contains the expected message
+      expect(error.message).toContain('notNull Violation'); // Check if the error message includes 'notNull Violation'
+    }
   });
 });
