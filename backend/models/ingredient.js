@@ -1,6 +1,6 @@
 // Import necessary modules
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); // Assuming this file exists and configures the database connection
+const sequelize = require('../config/db'); 
 
 // Define the Ingredient model
 class Ingredient extends Model {}
