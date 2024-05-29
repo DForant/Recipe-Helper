@@ -2,23 +2,20 @@
 const syncAndReturnModel = require('../models/recipe');
 const sequelize = require('../config/db');
 
-
-let Recipe // Declare variable to hold the Recipe model
-
-// Before any tests run, connecting to the database
-beforeAll(async () => {
-    Recipe = await syncAndReturnModel() // Initialize the Recipe model by calling the syncAndReturnModel function
-    await sequelize.sync({force: true}); // Sync the model with the database , forcing table creation (use with caution)
-});
-
-// After all tests have finished, closing the database connection
-afterAll(async () => {
-    await sequelize.close(); // close the database connection after all test have run.
-});
-
 // Describing a test suite for the 'Recipe' model
 describe('Recipe model', () => {
+  let Recipe // Declare variable to hold the Recipe model
 
+  // Before any tests run, connecting to the database
+  beforeAll(async () => {
+      Recipe = await syncAndReturnModel() // Initialize the Recipe model by calling the syncAndReturnModel function
+      await sequelize.sync({force: true}); // Sync the model with the database , forcing table creation (use with caution)
+  });
+
+  // After all tests have finished, closing the database connection
+  afterAll(async () => {
+      await sequelize.close(); // close the database connection after all test have run.
+  });
   // Test case: Checking if the 'Recipe' table exists in the database
   it('should have the "recipes" table', async () => {
     await expect(sequelize.queryInterface.showAllTables())
