@@ -2,6 +2,9 @@
 const syncAndReturnModel = require('../models/recipe-image');
 const sequelize = require('../config/db');
 
+
+// Jest describe block to group related tests
+describe('RecipeImage Model', () => {
   let RecipeImage
 
   // Before all tests, syncing the model with the database
@@ -15,8 +18,6 @@ const sequelize = require('../config/db');
     await sequelize.close(); // close the database connection after all tests
   });
 
-// Jest describe block to group related tests
-describe('RecipeImage Model', () => {
 
   // Test to check if the model syncs with the database
   it('should sync with the database', async () => {
