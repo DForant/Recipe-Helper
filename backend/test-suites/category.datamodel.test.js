@@ -3,21 +3,21 @@ const syncAndReturnModel = require('../models/category');
 // Import the configured sequelize instance from the 'db' configuration file
 const sequelize = require('../config/db');
 
-let Category; // Declare a variable to store the Category model
-
-// Hook to run before all test cases
-beforeAll(async () => {
-  Category = await syncAndReturnModel(); // Initialize the Category model by calling the imported function
-  await sequelize.sync({ force: true }); // Force sync the database, which will drop and recreate tables
-});
-
-// Hook to run after all test cases
-afterAll(async () => {
-  await sequelize.close(); // Close the database connection
-});
-
 // Describe block defines a test suite for the Category model
 describe('Category Model', () => {
+  let Category; // Declare a variable to store the Category model
+
+  // Hook to run before all test cases
+  beforeAll(async () => {
+    Category = await syncAndReturnModel(); // Initialize the Category model by calling the imported function
+    await sequelize.sync({ force: true }); // Force sync the database, which will drop and recreate tables
+  });
+
+  // Hook to run after all test cases
+  afterAll(async () => {
+    await sequelize.close(); // Close the database connection
+  });
+
   // Test case to check if a new category can be created successfully
   it('should create a new category', async () => {
     const categoryData = {
