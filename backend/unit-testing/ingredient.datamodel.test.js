@@ -1,6 +1,6 @@
 // Import necessary modules and models
-const syncAndReturnModel = require('../models/ingredient'); // Assuming this file exports the syncAndReturnModel function
-const sequelize = require('../config/db'); // Assuming this file configures the database connection
+const syncAndReturnModel = require('../models/ingredient');
+const sequelize = require('../config/db'); 
 
 let Ingredient; // Declare a variable to hold the Ingredient model
 
