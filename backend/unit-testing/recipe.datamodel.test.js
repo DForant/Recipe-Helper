@@ -71,7 +71,5 @@ describe('Recipe model', () => {
     expect(instance.description).toBeNull();
     expect(instance.instructions).toBeNull();
   });
-  
-
-});
+})
 
