@@ -37,4 +37,13 @@ describe('RecipeImage Model', () => {
     expect(RecipeImage.rawAttributes.image_url.type.toString()).toEqual('VARCHAR(255)');
     expect(RecipeImage.rawAttributes.image_url.defaultValue).toBeNull();
   });
+
+  it('should not allow nulls for recipe_id', async () => {
+    expect.assertions(1);
+    try {
+      await RecipeImage.create({ recipe_id: null });
+    } catch (error) {
+      expect(error.name).toBe('SequelizeValidationError');
+    }
+  });
 });
