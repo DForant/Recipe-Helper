@@ -2,18 +2,18 @@
 const syncAndReturnModel = require('../models/ingredient');
 const sequelize = require('../config/db'); 
 
-let Ingredient; // Declare a variable to hold the Ingredient model
-
-beforeAll(async () => {
-  Ingredient = await syncAndReturnModel(); // Initialize the Ingredient model by calling the syncAndReturnModel function
-  await sequelize.sync({ force: true }); // Sync the model with the database, forcing table creation (use with caution)
-});
-
-afterAll(async () => {
-  await sequelize.close(); // Close the database connection after all tests
-});
-
 describe('Ingredient model', () => {
+  let Ingredient; // Declare a variable to hold the Ingredient model
+
+  beforeAll(async () => {
+    Ingredient = await syncAndReturnModel(); // Initialize the Ingredient model by calling the syncAndReturnModel function
+    await sequelize.sync({ force: true }); // Sync the model with the database, forcing table creation (use with caution)
+  });
+
+  afterAll(async () => {
+    await sequelize.close(); // Close the database connection after all tests
+  });
+
   it('should create a new ingredient', async () => {
     // Define sample ingredient data
     const ingredientData = {
