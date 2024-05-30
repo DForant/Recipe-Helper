@@ -6,7 +6,6 @@ describe('User Model', () => {
 
     beforeAll(async () => {
         User = await syncAndReturnModel() // Initialize the User Model calling the syncAndReturnModel
-        await sequelize.sync({ force: true }); // sync the model with the database. This forces table creation use with caution
     });
 
     afterAll(async () => {

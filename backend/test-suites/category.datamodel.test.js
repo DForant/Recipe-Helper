@@ -10,7 +10,6 @@ describe('Category Model', () => {
   // Hook to run before all test cases
   beforeAll(async () => {
     Category = await syncAndReturnModel(); // Initialize the Category model by calling the imported function
-    await sequelize.sync({ force: true }); // Force sync the database, which will drop and recreate tables
   });
 
   // Hook to run after all test cases

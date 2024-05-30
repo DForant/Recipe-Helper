@@ -50,7 +50,7 @@ Recipe.init({
 async function syncAndReturnModel() {
     await sequelize.sync(); // Sync the model with the database
     return Recipe; // Return the Recipe model
-  }
+}
 
 // Exporting the Recipe model to be used in other parts of the application
 module.exports = syncAndReturnModel;
