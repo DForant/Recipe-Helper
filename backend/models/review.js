@@ -13,7 +13,7 @@ Review.init({
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    allowNull: false
+    allowNull: false,
   },
   // Reference to the user who wrote the review
   user_id: {
@@ -22,7 +22,7 @@ Review.init({
     references: {
       model: 'users', // Reference to the 'users' table
       key: 'id', // The 'id' field in the 'users' table
-    }
+    },
   },
   // Reference to the recipe being reviewed
   recipe_id: {
@@ -31,18 +31,18 @@ Review.init({
     references: {
       model: 'recipes', // Reference to the 'recipes' table
       key: 'id', // The 'id' field in the 'recipes' table
-    }
+    },
   },
   // Text content of the review
   review_text: {
     type: DataTypes.TEXT,
-    allowNull: true
+    allowNull: true,
   },
   // Timestamp for when the review was created
   created_at: {
     type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  }
+    defaultValue: DataTypes.NOW,
+  },
 }, {
   sequelize, // Database connection instance
   modelName: 'Review', // Name of the model
@@ -50,13 +50,13 @@ Review.init({
   timestamps: false, // Disabling automatic timestamp fields
   engine: 'MYISAM', // Database storage engine
   charset: 'utf8mb4', // Character set for the table
-  collate: 'utf8mb4_0900_ai_ci' // Collation setting for the table
+  collate: 'utf8mb4_0900_ai_ci', // Collation setting for the table
 });
 
 // Function to sync the model with the database and return the model
 async function syncAndReturnModel() {
-    await sequelize.sync(); // Sync the model with the database
-    return Review; // Return the Review model
+  await sequelize.sync(); // Sync the model with the database
+  return Review; // Return the Review model
 }
 
 // Exporting the syncAndReturnModel function

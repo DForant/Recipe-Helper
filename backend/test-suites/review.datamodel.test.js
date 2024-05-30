@@ -1,6 +1,5 @@
 // Import the syncAndReturnModel function from the Review model file
-const syncAndReturnModel = require('../models/review');
-// Import the database configuration
+const syncAndReturnModel = require('../models/review'); // Import the database configuration
 const sequelize = require('../config/db');
 
 // Describe block defines a test suite for the Review model
@@ -33,8 +32,7 @@ describe('Review Model', () => {
       user_id: 1,
       recipe_id: 1,
       review_text: 'Delicious recipe!'
-    });
-    // Expect the `review_text` of the created review to match the input
+    }); // Expect the `review_text` of the created review to match the input
     expect(review.review_text).toBe('Delicious recipe!');
   });
 

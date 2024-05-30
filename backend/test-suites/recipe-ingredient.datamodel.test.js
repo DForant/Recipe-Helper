@@ -1,6 +1,5 @@
 // Import the syncAndReturnModel function from the recipe-ingredient model file
-const syncAndReturnModel = require('../models/recipe-ingredient');
-// Import the sequelize instance configured in the db config file
+const syncAndReturnModel = require('../models/recipe-ingredient'); // Import the sequelize instance configured in the db config file
 const sequelize = require('../config/db');
 
 // Describe block for RecipeIngredient Model tests
@@ -14,10 +13,10 @@ describe('RecipeIngredient Model', () => {
     RecipeIngredient = await syncAndReturnModel();
   });
 
-  // afterAll hook to sync the database after all tests have run
+  // afterAll hook to close the database connection after all tests have run
   afterAll(async () => {
-    // Sync the sequelize instance
-    await sequelize.sync();
+    // Close the sequelize instance
+    await sequelize.close(); // Added close() instead of sync() to properly shut down after tests
   });
 
   // Test to check if the model name is correct
@@ -43,15 +42,10 @@ describe('RecipeIngredient Model', () => {
         ingredient_id: 2,
         quantity: 3.5,
         unit: 'cups'
-      });
-  
-      // Expect the new entry to have the correct 'recipe_id'
-      expect(newEntry.recipe_id).toBe(1);
-      // Expect the new entry to have the correct 'ingredient_id'
-      expect(newEntry.ingredient_id).toBe(2);
-      // Expect the new entry to have the correct 'quantity' (Sequelize returns DECIMAL as string)
-      expect(newEntry.quantity).toBe('3.50');
-      // Expect the new entry to have the correct 'unit'
+      }); // Expect the new entry to have the correct 'recipe_id'
+      expect(newEntry.recipe_id).toBe(1); // Expect the new entry to have the correct 'ingredient_id'
+      expect(newEntry.ingredient_id).toBe(2); // Expect the new entry to have the correct 'quantity' (Sequelize returns DECIMAL as string)
+      expect(newEntry.quantity).toBe('3.50'); // Expect the new entry to have the correct 'unit'
       expect(newEntry.unit).toBe('cups');
     } catch (error) {
       // Log any errors that occur during the creation of a new entry
