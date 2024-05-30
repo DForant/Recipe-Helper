@@ -10,7 +10,6 @@ describe('RecipeImage Model', () => {
   // Before all tests, syncing the model with the database
   beforeAll(async () => {
     RecipeImage = await syncAndReturnModel() // Initialize the RecipeImage model by calling the syncAndReturnModel
-    await sequelize.sync({force: true}); // Sync the model with the database, forcing table creation (use with caution)
   });
 
   // After all tests, closing the database connection

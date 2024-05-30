@@ -13,8 +13,6 @@ describe('Admin Model', () => {
   beforeAll(async () => {
     // Assign the Admin model by calling the syncAndReturnModel function
     Admin = await syncAndReturnModel();
-    // Sync the database, forcing it to drop and recreate tables based on the model definitions
-    await sequelize.sync({ force: true });
   });
 
   // afterAll hook runs after all the tests in this describe block

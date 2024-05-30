@@ -9,7 +9,6 @@ describe('Recipe model', () => {
   // Before any tests run, connecting to the database
   beforeAll(async () => {
       Recipe = await syncAndReturnModel() // Initialize the Recipe model by calling the syncAndReturnModel function
-      await sequelize.sync({force: true}); // Sync the model with the database , forcing table creation (use with caution)
   });
 
   // After all tests have finished, closing the database connection

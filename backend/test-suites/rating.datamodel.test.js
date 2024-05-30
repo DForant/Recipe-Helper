@@ -7,7 +7,6 @@ describe('Rating Model', () => {
 
     beforeAll(async () => {
         Rating = await syncAndReturnModel() // Initializes the Rating model by calling syncAndReplace
-        await sequelize.sync(); // This will recreate the tables for testing
       });
       
       afterAll(async () => {
