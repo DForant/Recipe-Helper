@@ -13,12 +13,6 @@ describe('RecipeIngredient Model', () => {
     RecipeIngredient = await syncAndReturnModel();
   });
 
-  // afterAll hook to close the database connection after all tests have run
-  afterAll(async () => {
-    // Close the sequelize instance
-    await sequelize.close(); // Added close() instead of sync() to properly shut down after tests
-  });
-
   // Test to check if the model name is correct
   it('should have the correct model name', () => {
     // Expect the name property of the model to be 'RecipeIngredient'
@@ -51,5 +45,11 @@ describe('RecipeIngredient Model', () => {
       // Log any errors that occur during the creation of a new entry
       console.error('Error creating new recipe ingredient entry:', error);
     }
+  });
+
+  // afterAll hook to close the database connection after all tests have run
+  afterAll(async () => {
+    // Close the sequelize instance
+    await sequelize.close(); // Added close() instead of sync() to properly shut down after tests
   });
 });

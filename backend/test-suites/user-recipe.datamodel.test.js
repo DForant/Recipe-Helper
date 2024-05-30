@@ -10,11 +10,6 @@ describe('UserRecipe Model', () => {
         await sequelize.sync({ force: true }); // This will recreate the tables
     });
 
-    // After all tests, close the database connection
-    afterAll(async () => {
-        await sequelize.close(); // Close the connection after the tests
-    });
-
     // Test for creating a new UserRecipe entry
     it('should create a new UserRecipe entry', async () => {
         const userRecipe = await UserRecipe.create({ user_id: 1, recipe_id: 1 }); // Creating a new entry
@@ -45,5 +40,10 @@ describe('UserRecipe Model', () => {
         await userRecipe.destroy(); // Deleting the entry
         const foundUserRecipe = await UserRecipe.findOne({ where: { user_id: 3 } }); // Attempting to find the deleted entry
         expect(foundUserRecipe).toBeNull(); // Expecting the result to be null
+    });
+
+    // After all tests, close the database connection
+    afterAll(async () => {
+        await sequelize.close(); // Close the connection after the tests
     });
 });

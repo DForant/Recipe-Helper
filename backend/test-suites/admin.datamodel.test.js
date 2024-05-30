@@ -14,12 +14,6 @@ describe('Admin Model', () => {
     // Assign the Admin model by calling the syncAndReturnModel function
     Admin = await syncAndReturnModel();
   });
-
-  // afterAll hook runs after all the tests in this describe block
-  afterAll(async () => {
-    // Close the sequelize connection to the database
-    await sequelize.close();
-  });
   
   // 'it' block defines an individual test case for creating a new admin
   it('should create a new admin', async () => {
@@ -65,5 +59,11 @@ describe('Admin Model', () => {
     await expect(Admin.create({ admin_id: 1, username: 'testUser', email: 'test@example.com' }))
       .rejects.toThrow();
   });
+
+  // afterAll hook runs after all the tests in this describe block
+  afterAll(async () => {
+    // Close the sequelize connection to the database
+    await sequelize.close();
+  });  
 
 });

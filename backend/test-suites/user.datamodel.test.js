@@ -12,11 +12,6 @@ describe('User Model', () => {
         User = await syncAndReturnModel(); // Initialize the User Model
     });
 
-    // After all tests, close the connection to the database
-    afterAll(async () => {
-        await sequelize.close(); // Close the database connection
-    });
-
     // Test case for creating a new user
     it('should create a new user', async () => {
         // Creating a new user with the provided details
@@ -31,5 +26,10 @@ describe('User Model', () => {
         expect(user.username).toBe('testuser'); // Check if the username is 'testuser'
         expect(user.email).toBe('test@example.com'); // Check if the email is 'test@example.com'
         expect(user.password).toBe('password123'); // Check if the password is 'password123'
+    });
+
+    // After all tests, close the connection to the database
+    afterAll(async () => {
+        await sequelize.close(); // Close the database connection
     });
 });

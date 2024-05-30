@@ -13,12 +13,6 @@ describe('Review Model', () => {
     Review = await syncAndReturnModel();
   });
 
-  // afterAll is run once after all the tests in this suite
-  afterAll(async () => {
-    // Sync the database and close the connection after all tests
-    await sequelize.sync();
-  });
-
   // Test case to check if the `review_id` field is defined
   it('should have a `review_id` field', () => {
     // Expect the `review_id` field to be defined in the Review model's raw attributes
@@ -36,5 +30,9 @@ describe('Review Model', () => {
     expect(review.review_text).toBe('Delicious recipe!');
   });
 
-  // Add more tests as needed
+  // afterAll is run once after all the tests in this suite
+  afterAll(async () => {
+    // Sync the database and close the connection after all tests
+    await sequelize.sync();
+  });
 });

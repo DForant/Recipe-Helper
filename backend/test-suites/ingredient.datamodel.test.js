@@ -11,11 +11,6 @@ describe('Ingredient model', () => {
     Ingredient = await syncAndReturnModel(); // Initialize the Ingredient model by calling the syncAndReturnModel function
   });
 
-  // Hook to run after all test cases
-  afterAll(async () => {
-    await sequelize.close(); // Close the database connection after all tests
-  });
-
   // Test case to check if a new ingredient can be created successfully
   it('should create a new ingredient', async () => {
     // Define sample ingredient data
@@ -45,4 +40,9 @@ describe('Ingredient model', () => {
       expect(error.message).toContain('notNull Violation'); // Check for 'notNull Violation' in the error message
     }
   });
+
+  // Hook to run after all test cases
+  afterAll(async () => {
+    await sequelize.close(); // Close the database connection after all tests
+  });  
 });

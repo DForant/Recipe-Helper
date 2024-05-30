@@ -12,11 +12,6 @@ describe('RecipeCategory model', () => {
         RecipeCategory = await syncAndReturnModel(); // Initializes the RecipeCategory model by calling syncAndReturnModel
     });
 
-    // Hook to run after all test cases
-    afterAll(async () => {
-        await sequelize.sync(); // Sync the model with the database after all tests
-    });
-
     // Test case to check if the model name is correct
     it('should have the correct modelName', () => {
         expect(RecipeCategory.name).toBe('RecipeCategory'); // Check if the model name is 'RecipeCategory'
@@ -38,4 +33,8 @@ describe('RecipeCategory model', () => {
         expect(RecipeCategory.options.timestamps).toBe(false); // Check if timestamps are disabled
     });
 
+    // Hook to run after all test cases
+    afterAll(async () => {
+        await sequelize.sync(); // Sync the model with the database after all tests
+    });    
 });

@@ -11,11 +11,6 @@ describe('Recipe model', () => {
     Recipe = await syncAndReturnModel(); // Initialize the Recipe model by calling the syncAndReturnModel function
   });
 
-  // After all tests have finished, closing the database connection
-  afterAll(async () => {
-    await sequelize.close(); // Close the database connection after all tests have run.
-  });
-
   // Test case: Checking if the 'Recipe' table exists in the database
   it('should have the "recipes" table', async () => {
     await expect(sequelize.queryInterface.showAllTables())
@@ -60,5 +55,10 @@ describe('Recipe model', () => {
     }); // Create an instance of Recipe with null fields for description and instructions
     expect(instance.description).toBeNull(); // Check if the instance allows null for description
     expect(instance.instructions).toBeNull(); // Check if the instance allows null for instructions
+  });
+
+  // After all tests have finished, closing the database connection
+  afterAll(async () => {
+    await sequelize.close(); // Close the database connection after all tests have run.
   });
 });

@@ -12,11 +12,6 @@ describe('Category Model', () => {
     Category = await syncAndReturnModel(); // Initialize the Category model by calling the imported function
   });
 
-  // Hook to run after all test cases
-  afterAll(async () => {
-    await sequelize.close(); // Close the database connection
-  });
-
   // Test case to check if a new category can be created successfully
   it('should create a new category', async () => {
     const categoryData = {
@@ -42,4 +37,10 @@ describe('Category Model', () => {
       expect(error.message).toContain('notNull Violation'); // Check if the error message includes 'notNull Violation'
     }
   });
+
+  // Hook to run after all test cases
+  afterAll(async () => {
+    await sequelize.close(); // Close the database connection
+  });
+  
 });

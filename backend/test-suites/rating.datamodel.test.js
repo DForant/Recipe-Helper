@@ -12,11 +12,6 @@ describe('Rating Model', () => {
         Rating = await syncAndReturnModel(); // Initializes the Rating model by calling syncAndReturnModel
     });
 
-    // Hook to run after all test cases
-    afterAll(async () => {
-        await sequelize.close(); // Close the database connection after tests
-    });
-
     // Test case to check if a new rating can be created successfully
     it('should create a rating', async () => {
         // Define the data for a new rating
@@ -34,4 +29,9 @@ describe('Rating Model', () => {
         expect(rating.recipe_id).toBe(1); // Check if the recipe_id matches the provided data
         expect(rating.rating).toBe(4.5); // Check if the rating value matches the provided data
     });
+
+    // Hook to run after all test cases
+    afterAll(async () => {
+        await sequelize.close(); // Close the database connection after tests
+    });    
 });

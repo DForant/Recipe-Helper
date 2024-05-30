@@ -11,11 +11,6 @@ describe('RecipeImage Model', () => {
     RecipeImage = await syncAndReturnModel(); // Initialize the RecipeImage model by calling the syncAndReturnModel function
   });
 
-  // After all tests, closing the database connection
-  afterAll(async () => {
-    await sequelize.close(); // Close the database connection after all tests
-  });
-
   // Test to check if the model syncs with the database
   it('should sync with the database', async () => {
     await expect(sequelize.sync()).resolves.not.toThrow(); // Expect the sequelize.sync() to not throw any errors
@@ -44,5 +39,10 @@ describe('RecipeImage Model', () => {
     } catch (error) {
       expect(error.name).toBe('SequelizeValidationError'); // Expect to catch a SequelizeValidationError
     }
+  });
+
+  // After all tests, closing the database connection
+  afterAll(async () => {
+    await sequelize.close(); // Close the database connection after all tests
   });
 });
