@@ -3,6 +3,17 @@ const express = require('express');
 // Require the sequelize instance configured for the database;
 const sequelize = require('./config/db.js');
 
+// Initialize the Express application;
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Require the userRoutes module
+const userRoutes = require('./routes/userRoutes'); // Adjust the path as necessary
+
+// Use the userRoutes with '/api/users' as the base path
+app.use('/api/users', userRoutes);
+
 // Function to test the database connection;
 const testDatabaseConnection = async () => {
   try {
@@ -19,8 +30,6 @@ const testDatabaseConnection = async () => {
 // Execute the function to test the database connection;
 testDatabaseConnection();
 
-// Initialize the Express application;
-const app = express();
 // Define the port number for the server to listen on;
 const port = 3000; // Choose any available port;
 
@@ -38,4 +47,3 @@ app.listen(port, () => {
 
 // If there are exports, they would be converted like this:
 // module.exports = { exportedFunction, exportedVariable };
-
