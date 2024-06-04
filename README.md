@@ -23,21 +23,26 @@ Create Recipes: Users can create new recipes with the following details:
      - Edit recipe details
      - Delete recipes
 5. Recipe Reviews and Ratings
-Rate Recipes:
-   - Users can rate recipes (e.g., 1 to 5 stars).
-   - Write Reviews:
-   - Share your thoughts and experiences about a recipe.
-Admin Moderation:
-   - Admins can approve, reject, or edit reviews.
-Technology Stack
-   -Front-end:
+   -Rate Recipes:
+      - Users can rate recipes (e.g., 1 to 5 stars).
+      - Write Reviews:
+      - Share your thoughts and experiences about a recipe.
+   -Admin Moderation:
+      - Admins can approve, reject, or edit reviews.
+
+
+
+Technology Stack:
+   - Front-end:
       - React (bootstrapped with Vite)
       - Tailwind CSS for styling (Or use Adobe XD for UI/UX design)
       - React Router for navigation
-      - Back-end:
+   - Back-end:
       - Node.js
       - Express.js for API endpoints
       - MySQL database (using Sequelize ORM)
+
+
 Deployment:
    - Deploy front-end and back-end separately (e.g., Heroku, Vercel, AWS)
 Testing:
