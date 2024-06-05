@@ -39,7 +39,6 @@ describe('Rating Model', () => {
     
     // Test to check that the value is a decimal
     it('should be a decimal', async () => {
-        // Assuming 'rating' is the correct field name as per your model definition
         await expect(Rating.create({ 
           user_id: 1, 
           recipe_id: 1, 
