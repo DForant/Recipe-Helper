@@ -58,7 +58,29 @@ router.get('/recipes/:recipe_id', async (req, res) => {
     }
   });  
 
-// TODO: Add logic for Update existing recipe  
+
+// EDIT a single recipe by id
+router.put('/recipes/:id', async (req, res) => {
+  try {
+    // Find the recipe by its ID
+    const recipe = await Recipe.findByPk(req.params.id);
+
+    // Update the recipe with the new data from the request body
+    if (recipe) {
+      await recipe.update({
+        title: req.body.title,
+        description: req.body.description,
+        instructions: req.body.instructions
+      });
+      res.status(200).json({ message: 'Recipe updated successfully' });
+    } else {
+      res.status(404).json({ message: 'Recipe not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating recipe', error: error.message });
+  }
+});
+
 
 // DELETE a recipe by ID
 router.delete('/recipes/:id', async (req, res) => {
