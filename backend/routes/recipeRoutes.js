@@ -14,16 +14,15 @@ syncAndReturnModel().then(model => {
 // CREATE a new recipe
 router.post('/recipes', async (req, res) => {
     // Create new Recipe instance
-    const newRecipe = await Recipe.create({
+    const newRecipe = {
         title: req.body.title,  
         description: req.body.description,
         instructions: req.body.instructions
-    })
+    }
 
     try {
         const newRecipe = await Recipe.create(req.body);
         res.status(201).json({
-            recipe_id: newRecipe.recipe_id,
             title: newRecipe.title,
             description: newRecipe.description,
             instructions: newRecipe.instructions,
