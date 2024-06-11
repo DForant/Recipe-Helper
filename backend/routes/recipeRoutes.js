@@ -1,5 +1,5 @@
 const express = require('express');
-const syncAndReturnModel = require('../models/recipe'); // Adjust the path as necessary
+const syncAndReturnModel = require('../models/recipe');
 const router = express.Router(); // Create a new router object
 
 // Wrap the model synchronization in an async function
