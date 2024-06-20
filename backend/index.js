@@ -9,10 +9,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Require the userRoutes module
-const userRoutes = require('./routes/userRoutes'); // Adjust the path as necessary
+const userRoutes = require('./routes/userRoutes');
+const recipeRoutes = require('./routes/recipeRoutes'); 
+const categoryRoutes = require('./routes/categoryRoutes');
 
-// Use the userRoutes with '/api/users' as the base path
-app.use('/api/users', userRoutes);
+// routes
+app.use('/api/users', userRoutes);  // Users
+app.use('/api', recipeRoutes); // Recipes
+app.use('/api', categoryRoutes); // Categories
 
 // Function to test the database connection;
 const testDatabaseConnection = async () => {

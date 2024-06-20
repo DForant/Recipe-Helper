@@ -28,6 +28,36 @@ describe('RecipeCategory model', () => {
         expect(primaryKeyAttributes).toEqual(['recipe_id', 'category_id']); // Check if the primary keys are 'recipe_id' and 'category_id'
     });
 
+    // Test case to check that the recipe_id should not be null
+    it('should not be null', async () => {
+        await expect(RecipeCategory.create({ 
+            recipe_id: null,
+        })).rejects.toThrow();
+    });
+    
+    // Test to check that recipe_id is an integer
+    it('should be an integer', async () => {
+        await expect(RecipeCategory.create({ 
+            recipe_id: 'not an integer' 
+          })).rejects.toThrow();
+        
+          await expect(RecipeCategory.create({ 
+            recipe_id: '1.234' // Not an integer so it should error
+          })).rejects.toThrow();
+    })
+
+    // Test to check that category_id is an integer
+    it('should be an integer', async () => {
+        await expect(RecipeCategory.create({ 
+            category_id: 'not an integer' 
+          })).rejects.toThrow();
+        
+          await expect(RecipeCategory.create({ 
+            category_id: '1.234' // Not an integer so it should error
+          })).rejects.toThrow();
+    })
+
+
     // Test case to check if the model does not have timestamps
     it('should not have timestamps', () => {
         expect(RecipeCategory.options.timestamps).toBe(false); // Check if timestamps are disabled
