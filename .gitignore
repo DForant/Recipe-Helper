@@ -2,4 +2,84 @@
 **/node_modules
 **/.env
 *.code-workspace
-*.sln
+
+
+# Visual Studio files and folders
+# Ignore all bin and obj folders
+**/bin/
+**/obj/
+
+# Ignore all files with the .suo extension
+*.suo
+
+# Ignore all files with the .user extension
+*.user
+
+# Ignore all files with the .userosscache extension
+*.userosscache
+
+# Ignore all files with the .sln.docstates extension
+*.sln.docstates
+
+# Ignore all files with the .userprefs extension
+*.userprefs
+
+# Ignore all files with the .nupkg extension (NuGet Packages)
+*.nupkg
+
+# Ignore the packages folder to avoid binaries in the repository
+packages/
+
+# Ignore all files with the .csproj, .vbproj, .fsproj extensions (Project files)
+*.csproj
+*.vbproj
+*.fsproj
+
+# Ignore all files with the .csproj.user, .vbproj.user, .fsproj.user extensions (User-specific project files)
+*.csproj.user
+*.vbproj.user
+*.fsproj.user
+
+# Ignore all files with the .builds extension
+*.builds
+
+# Ignore all files with the .pidb extension (Project Intermediate Debug)
+*.pidb
+
+# Ignore all files with the .svclog extension (WCF Trace files)
+*.svclog
+
+# Ignore all files with the .scc extension (Source control files)
+*.scc
+
+# Ignore all files with the .vspscc extension (Visual Studio Source Control files)
+*.vspscc
+
+# Ignore all files with the .vssscc extension (Visual Studio Solution Source Control files)
+*.vssscc
+
+# Ignore the .vs directory (Visual Studio settings)
+.vs/
+
+# Ignore all files with the .tmp extension
+*.tmp
+
+# Ignore all files with the .userprefs extension
+*.userprefs
+
+# Ignore all files with the .csdproj extension (Compact SQL Server Database Project files)
+*.csdproj
+
+# Ignore all files with the .cache extension (Cache files)
+*.cache
+
+# Ignore all files with the .vsp extension (Visual Studio Performance Report files)
+*.vsp
+
+# Ignore all files with the .vspx extension (Visual Studio Performance Exploration files)
+*.vspx
+
+# Ignore SQL Server files
+*.mdf
+*.ldf
+*.ndf
