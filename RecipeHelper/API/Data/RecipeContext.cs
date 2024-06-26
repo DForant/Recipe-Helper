@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace RecipeHelper.API  .Data
+namespace RecipeHelper.API.Data
 {
     public class RecipeDbContext : DbContext
     {
