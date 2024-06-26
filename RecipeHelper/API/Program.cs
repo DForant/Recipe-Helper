@@ -16,5 +16,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+builder.Services.AddDbContext<RecipeDbContext>();
 
 app.Run();
