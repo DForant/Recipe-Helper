@@ -1,6 +1,0 @@
-@RecipeHelper.API_HostAddress = http://localhost:5079
-
-GET {{RecipeHelper.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
